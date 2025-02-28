@@ -1,13 +1,16 @@
 "use client";
-import React from "react";
+import { Movie } from "@/app/interfaces/movie-interface";
+import React, { useState, useEffect } from "react";
 
 const SearchBar = () => {
-    const handleSearch = (query: string) => {
-        console.log("hello:", query);
-      };
+  const [searchTerm, setSearchTerm] = useState("");
+  const [movieResult, setMovieResult] = useState<Movie[]>()
+  const handleSearch = (query: string) => {
+    console.log("hello:", query);
+    setSearchTerm(query);
+  };
   return (
     <div className="">
-      <h1>Hello</h1>
       <form>
         <input
           type="text"
@@ -18,8 +21,7 @@ const SearchBar = () => {
           className="border m-auto"
           placeholder="Search"
         ></input>
-      <input type="text" name="name" />
-
+        <input type="text" name="name" />
       </form>
     </div>
   );
