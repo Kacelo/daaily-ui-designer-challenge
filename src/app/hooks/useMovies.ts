@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Movie } from "../interfaces/movie-interface";
-const API_KEY = process.env.API_KEY;
+import { searchMovies } from "@/api/movies";
+const API_KEY = process.env.NEXT_PUBLIC_OMDB_API_KEY;
 const fetchMovies = async (limit = 10): Promise<Array<Movie>> => {
   const response = await fetch(
     `https://www.omdbapi.com/?i=tt3896198&apikey=81145613`
@@ -10,30 +11,19 @@ const fetchMovies = async (limit = 10): Promise<Array<Movie>> => {
   return data.filter((x: Movie, index: number) => index <= limit);
 };
 console.log("api key", API_KEY);
-const searchMovies = async (
-  limit = 10,
-  title: string
-): Promise<Array<Movie>> => {
-  const response = await fetch(
-    `https://www.omdbapi.com/?s=${title}&apikey=81145613`
-  );
-  const data = await response.json();
-  console.log(data);
-
-  return data.filter((x: Movie, index: number) => index <= limit);
-};
 const useMovies = (limit: number) => {
   return useQuery({
     queryKey: ["movies", limit],
     queryFn: () => fetchMovies(limit),
   });
 };
-const useMovieSearch2 = (limit: number, title: string) => {
-  console.log("Tite", title);
+const useMovieSearch = (limit: number, query: string) => {
+  console.log("Tite", query);
   return useQuery({
-    queryKey: ["movies", title],
-    queryFn: () => searchMovies(limit, title),
+    queryKey: ["movies", query],
+    queryFn: () => searchMovies(limit, query),
+    enabled: Boolean(query)
   });
 };
 
-export { useMovies, fetchMovies, useMovieSearch2, searchMovies };
+export { useMovies, fetchMovies, useMovieSearch, searchMovies };

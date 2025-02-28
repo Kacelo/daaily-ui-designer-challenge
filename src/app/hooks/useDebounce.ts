@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 
-const useDebounce = (searchTerm: string, milliseconds: number) => {
-  const [debouncedTerm, setDebouncedTerm] = useState("");
+const useDebounce = (query: string, milliseconds: number) => {
+  const [debouncedQuery, setDebouncedQuery] = useState("");
 
   useEffect(() => {
     const delay = setTimeout(() => {
-      setDebouncedTerm(searchTerm);
+      setDebouncedQuery(query);
     }, milliseconds); 
     return () => clearTimeout(delay); 
-  }, [milliseconds, searchTerm]);
+  }, [milliseconds, query]);
 
-  return debouncedTerm;
+  return debouncedQuery;
 };
 
 export { useDebounce };

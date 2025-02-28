@@ -6,11 +6,11 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import useMovies from "@/app/hooks/useMovies2";
 import { searchMovies } from "@/api/movies";
 import { useDebounce } from "@/app/hooks/useDebounce";
-import { useMovieSearch2 } from "@/app/hooks/useMovies";
+import { useMovieSearch } from "@/app/hooks/useMovies";
 const SearchBar = () => {
   const [movieName, setMovieName] = useState("");
   const debouncedSearchTerm = useDebounce(movieName, 300);
-  const { data: movies } = useMovieSearch2(10, debouncedSearchTerm);
+  const { data: movies } = useMovieSearch(10, debouncedSearchTerm);
   const handleSearch = (searchTerm: string) => {
     setMovieName(searchTerm);
   };
