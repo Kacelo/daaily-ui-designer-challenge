@@ -31,7 +31,7 @@ const useMovieInfiniteSearchScroll = (query: string, limit: number = LIMIT) => {
     queryKey: ["movies", query, limit],
     queryFn: async ({pageParam = 1}) => searchFilms(query, pageParam, limit),
     initialPageParam: 1,
-    getNextPageParam: (lastPage) => lastPage?.nextPage,
+    getNextPageParam: (lastPage) => lastPage.nextPage,
   });
 };
 

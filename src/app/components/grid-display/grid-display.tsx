@@ -2,7 +2,7 @@ import React from "react";
 import { MovieCards } from "../cards/cards";
 import { MovieGridInterface } from "@/app/interfaces/movie-grid-interface";
 
-const GridDisplay: React.FC<MovieGridInterface> = ({ movies, isLoading }) => {
+const GridDisplay: React.FC<MovieGridInterface> = ({ movies, isLoading, ref }) => {
   if (isLoading) return <p>Loading...</p>;
 
   return (
@@ -21,6 +21,7 @@ const GridDisplay: React.FC<MovieGridInterface> = ({ movies, isLoading }) => {
           />
         </li>
       ))}
+      <div ref={ref}></div>
     </ul>
   );
 };

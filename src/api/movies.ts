@@ -14,7 +14,6 @@ const searchMovies = async (
   );
   const data = (await response.json()) as SearchResult;
   if (data.Response === "True" && data.Search) {
-    console.log("index 0:", data.Search);
     return data.Search.slice(0, limit);
   }
   return [];
@@ -32,14 +31,11 @@ export const searchFilms = async (
     `https://www.omdbapi.com/?s=${query}&apikey=81145613&page=${pageParam}`
   );
   const data = await response.json();
-  console.log("index 20:", data, pageParam);
-
   if (data.Response === "True" && data.Search && pageParam) {
-    console.log("index 30:", data.Search.slice(pageParam, pageParam + limit));
     return {
-      data: data.Search.slice(pageParam, pageParam + limit),
+      data: data.Search.slice(pageParam, pageParam + LIMIT),
       currentPage: pageParam,
-      nextPage: pageParam + limit < data.length ? pageParam + limit : null,
+      nextPage: data.totalResults > pageParam * LIMIT ? pageParam + 1 : null,
     };
   }
   return {
