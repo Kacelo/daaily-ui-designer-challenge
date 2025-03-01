@@ -1,5 +1,5 @@
 // import Image from "next/image";
-"use client"
+"use client";
 import { useState } from "react";
 import SearchBar from "./components/search-bar/search-bar";
 import { useDebounce } from "./hooks/useDebounce";
@@ -12,8 +12,12 @@ export default function Home() {
   const { data: movies, isLoading } = useMovieSearch(10, debouncedSearchTerm);
   return (
     <div className="">
-      <SearchBar setSearchMovieName={setSearchMovieName} />
-      <GridDisplay movies={movies} isLoading={isLoading} />
+      <div className="items-center">
+        <SearchBar setSearchMovieName={setSearchMovieName} />
+      </div>
+      <div className="mt-4">
+        <GridDisplay movies={movies} isLoading={isLoading} />
+      </div>
     </div>
   );
 }

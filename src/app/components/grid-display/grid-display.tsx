@@ -1,5 +1,5 @@
 import React from "react";
-import { Cards } from "../cards/cards";
+import { MovieCards } from "../cards/cards";
 import { MovieGridInterface } from "@/app/interfaces/movie-grid-interface";
 
 const GridDisplay: React.FC<MovieGridInterface> = ({ movies, isLoading }) => {
@@ -8,11 +8,11 @@ const GridDisplay: React.FC<MovieGridInterface> = ({ movies, isLoading }) => {
   return (
     <ul
       role="list"
-      className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 sm:gap-x-6 md:grid-cols-3 lg-grid-cols-4 xl:gap-x-8"
+      className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-x-2 md:grid-cols-5 lg-grid-cols-6"
     >
       {movies?.map((movie, index) => (
-        <li key={index} className="relative">
-          <Cards
+        <li key={index} className="">
+          <MovieCards
             Title={movie.Title}
             Year={movie.Year}
             Poster={movie?.Poster}
