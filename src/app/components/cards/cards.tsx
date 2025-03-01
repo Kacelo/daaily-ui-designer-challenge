@@ -9,7 +9,6 @@ export const MovieCards: React.FC<MovieSearchResult> = ({
   Type,
 }) => {
     const backgroundImage = Poster === "N/A" ? "./fallback-poster.jpg" : Poster;
-console.log('image url:', backgroundImage)
   return (
     <div className="max-w-xs w-full group/card">
       <div
