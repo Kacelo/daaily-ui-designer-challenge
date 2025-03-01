@@ -1,3 +1,3 @@
 export interface SearchBarProps {
-    query: string;
-}
+    setSearchMovieName: (term: string) => void;
+  }

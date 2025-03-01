@@ -30,9 +30,16 @@ interface Rating {
   Source: string;
   Value: string;
 }
+export interface MovieSearchResult {
+  Title: string;
+  Year: string;
+  Poster: string;
+  imdbID: string;
+  Type: string;
+}
 
 export interface SearchResult {
-  Search: Movie[];
+  Search: MovieSearchResult[];
   totalResults: string;
   Response: string;
 }
