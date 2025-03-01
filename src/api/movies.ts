@@ -33,9 +33,9 @@ export const searchFilms = async (
   const data = await response.json();
   if (data.Response === "True" && data.Search && pageParam) {
     return {
-      data: data.Search.slice(pageParam, pageParam + LIMIT),
+      data: data.Search.slice(pageParam, pageParam + limit),
       currentPage: pageParam,
-      nextPage: data.totalResults > pageParam * LIMIT ? pageParam + 1 : null,
+      nextPage: data.totalResults > pageParam * limit ? pageParam + 1 : null,
     };
   }
   return {
