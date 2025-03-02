@@ -2,7 +2,28 @@
 import { useFocusedMovie } from "@/app/hooks/useMovies";
 import { focusedMovieProps } from "@/app/interfaces/focused-view-interface";
 import { FocusedMovieSkeleton } from "../skeletons/view-focused-movie";
+import { getMoviePoster } from "@/app/utils/helpers";
 
+/**
+ * Component to display detailed information about a focused movie.
+ * 
+ * @param {focusedMovieProps} props - The properties for the component.
+ * @param {string} props.imdbID - The IMDb ID of the movie to fetch and display.
+ * 
+ * @returns {JSX.Element} The rendered component displaying the movie details.
+ * 
+ * @example
+ * ```tsx
+ * <ViewFocusedMovie imdbID="tt0111161" />
+ * ```
+ * 
+ * @remarks
+ * This component fetches movie data using the `useFocusedMovie` hook and displays
+ * a loading skeleton while the data is being fetched. If an error occurs during
+ * fetching, an error message is displayed. Once the data is successfully fetched,
+ * the movie's poster, title, year, rating, runtime, genre, plot, actors, and director
+ * are displayed.
+ */
 export const ViewFocusedMovie: React.FC<focusedMovieProps> = ({ imdbID }) => {
   const { data: focusedMovie, isLoading, error } = useFocusedMovie(imdbID);
 
@@ -18,10 +39,7 @@ export const ViewFocusedMovie: React.FC<focusedMovieProps> = ({ imdbID }) => {
       <p className="text-red-500">Error fetching movie: {error.message}</p>
     );
 
-  const backgroundImage =
-    focusedMovie?.Poster === "N/A"
-      ? "./fallback-poster.jpg"
-      : focusedMovie?.Poster;
+  const backgroundImage = getMoviePoster(focusedMovie);
 
   return (
     <div className="p-4 max-w-5xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-6">
@@ -53,3 +71,5 @@ export const ViewFocusedMovie: React.FC<focusedMovieProps> = ({ imdbID }) => {
     </div>
   );
 };
+
+

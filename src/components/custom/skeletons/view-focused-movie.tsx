@@ -1,5 +1,13 @@
+import React from "react";
+
 import { Skeleton } from "@/components/ui/skeleton";
 
+/**
+ * A skeleton component that serves as a placeholder while the focused movie content is loading.
+ * It displays a layout with a large image area and several text lines to mimic the structure of the actual content.
+ *
+ * @returns {JSX.Element} The skeleton component for the focused movie view.
+ */
 export function FocusedMovieSkeleton() {
   return (
     <div className="p-4 max-w-5xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-6">
