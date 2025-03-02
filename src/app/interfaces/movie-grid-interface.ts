@@ -1,7 +1,7 @@
 import { MovieSearchResult } from "./movie-interface";
 
 export interface MovieGridInterface {
-  movies: MovieSearchResult[];
+  movies: MovieSearchResult[] | undefined
   isLoading: boolean;
-  ref: (node?: Element | null) => void;
+  ref?: (node?: Element | null) => void;
 }

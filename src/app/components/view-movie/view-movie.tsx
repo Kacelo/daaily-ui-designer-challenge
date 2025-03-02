@@ -4,11 +4,19 @@ import { focusedMovieProps } from "@/app/interfaces/focused-view-interface";
 import { FocusedMovieSkeleton } from "../skeletons/view-focused-movie";
 
 export const ViewFocusedMovie: React.FC<focusedMovieProps> = ({ imdbID }) => {
-  const { data: focusedMovie, isLoading } = useFetchFocusedMovie(imdbID);
+  const { data: focusedMovie, isLoading, error } = useFetchFocusedMovie(imdbID);
 
   if (isLoading) {
-    return <div><FocusedMovieSkeleton /></div>;
+    return (
+      <div>
+        <FocusedMovieSkeleton />
+      </div>
+    );
   }
+  if (error)
+    return (
+      <p className="text-red-500">Error fetching movie: {error.message}</p>
+    );
 
   const backgroundImage =
     focusedMovie?.Poster === "N/A"
