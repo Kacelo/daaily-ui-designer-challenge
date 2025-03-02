@@ -31,6 +31,7 @@ export default function Home() {
       <div className="mt-4">
         <GridDisplay movies={allMovies} isLoading={isLoading}  ref={ref} />
       </div>
+     
     </div>
   );
 }
