@@ -3,19 +3,21 @@ import { useEffect, useState } from "react";
 import { useDebounce } from "./hooks/useDebounce";
 import {
   useFetchInitialMovies,
-  useMovieInfiniteSearchScroll,
+  useInfiniteMoviesSearch,
 } from "./hooks/useMovies";
 import { useInView } from "react-intersection-observer";
-import GridDisplay from "./components/grid-display/grid-display";
 import { useSearch } from "./utils/search-provider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import GridDisplay from "@/components/custom/grid-display/grid-display";
 
 export default function Home() {
   const [initialMoviesQuery, setInitialMoviesQuery] = useState("avengers");
   const { movieNameSearch } = useSearch();
   const debouncedSearchTerm = useDebounce(movieNameSearch, 300);
-  const { data, isLoading, fetchNextPage, error } =
-    useMovieInfiniteSearchScroll(debouncedSearchTerm, 10);
+  const { data, isLoading, fetchNextPage, error } = useInfiniteMoviesSearch(
+    debouncedSearchTerm,
+    10
+  );
   const {
     data: initialMovies,
     isLoading: initialMovieLoad,

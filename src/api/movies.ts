@@ -1,12 +1,12 @@
 "use client";
 import { LIMIT } from "@/app/constants/constants";
-import { Movie, MovieSearchResult } from "@/app/interfaces/movie-interface";
+import { Movie, MovieSearchResultType } from "@/app/interfaces/movie-interface";
 
 // function to search for movies
 const fetchInitialMovies = async (
   query: string,
   limit = LIMIT
-): Promise<Array<MovieSearchResult>> => {
+): Promise<Array<MovieSearchResultType>> => {
   const response = await fetch(
     `https://www.omdbapi.com/?s=${query}&apikey=81145613`
   );
@@ -23,12 +23,12 @@ const fetchInitialMovies = async (
   }
   return [];
 };
-export const searchFilms = async (
+export const searchMovies = async (
   query: string,
   pageParam?: number,
   limit: number = LIMIT
 ): Promise<{
-  data: MovieSearchResult[];
+  data: MovieSearchResultType[];
   currentPage: number;
   nextPage: number | null;
 }> => {

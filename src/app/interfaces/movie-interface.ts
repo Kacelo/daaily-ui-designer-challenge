@@ -30,7 +30,7 @@ interface Rating {
   Source: string;
   Value: string;
 }
-export interface MovieSearchResult {
+export interface MovieSearchResultType {
   Title: string;
   Year: string;
   Poster: string;
@@ -38,8 +38,3 @@ export interface MovieSearchResult {
   Type: string;
 }
 
-export interface SearchResult {
-  Search: MovieSearchResult[];
-  totalResults: string;
-  Response: string;
-}

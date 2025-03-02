@@ -1,4 +1,4 @@
-import { ViewFocusedMovie } from "@/app/components/view-movie/view-movie";
+import { ViewFocusedMovie } from "@/components/custom/view-movie/view-movie";
 
 export default async function Page({
   params,

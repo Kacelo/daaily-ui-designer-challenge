@@ -1,8 +1,8 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { MovieSearchResult } from "@/app/interfaces/movie-interface";
+import { MovieSearchResultType } from "@/app/interfaces/movie-interface";
 
-export const MovieCards: React.FC<MovieSearchResult> = ({
+export const MovieCards: React.FC<MovieSearchResultType> = ({
   Title,
   Year,
   Poster,

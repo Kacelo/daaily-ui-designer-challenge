@@ -1,7 +1,7 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import {
   fetchFocusedMovie,
-  searchFilms,
+  searchMovies,
   fetchInitialMovies,
 } from "@/api/movies";
 import { LIMIT } from "../constants/constants";
@@ -13,16 +13,16 @@ const useFetchInitialMovies = (query: string) => {
     enabled: Boolean(query),
   });
 };
-const useMovieInfiniteSearchScroll = (query: string, limit: number = LIMIT) => {
+const useInfiniteMoviesSearch = (query: string, limit: number = LIMIT) => {
   return useInfiniteQuery({
     queryKey: ["movies", query, limit],
-    queryFn: async ({ pageParam = 1 }) => searchFilms(query, pageParam, limit),
+    queryFn: async ({ pageParam = 1 }) => searchMovies(query, pageParam, limit),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage.nextPage,
     enabled: Boolean(query),
   });
 };
-const useFetchFocusedMovie = (imdbID: string) => {
+const useFocusedMovie = (imdbID: string) => {
   return useQuery({
     queryKey: ["movies", imdbID],
     queryFn: () => fetchFocusedMovie(imdbID),
@@ -32,6 +32,6 @@ const useFetchFocusedMovie = (imdbID: string) => {
 
 export {
   useFetchInitialMovies,
-  useMovieInfiniteSearchScroll,
-  useFetchFocusedMovie,
+  useInfiniteMoviesSearch,
+  useFocusedMovie,
 };

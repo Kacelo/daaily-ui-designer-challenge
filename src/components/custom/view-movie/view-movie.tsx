@@ -1,10 +1,10 @@
 "use client";
-import { useFetchFocusedMovie } from "@/app/hooks/useMovies";
+import { useFocusedMovie } from "@/app/hooks/useMovies";
 import { focusedMovieProps } from "@/app/interfaces/focused-view-interface";
 import { FocusedMovieSkeleton } from "../skeletons/view-focused-movie";
 
 export const ViewFocusedMovie: React.FC<focusedMovieProps> = ({ imdbID }) => {
-  const { data: focusedMovie, isLoading, error } = useFetchFocusedMovie(imdbID);
+  const { data: focusedMovie, isLoading, error } = useFocusedMovie(imdbID);
 
   if (isLoading) {
     return (
