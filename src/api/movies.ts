@@ -51,7 +51,6 @@ const fetchFocusedMovie = async (imdbID: string): Promise<Movie> => {
     `https://www.omdbapi.com/?i=${imdbID}&apikey=81145613`
   );
   const data = await response.json();
-  console.log(data);
   return data;
 };
 export { searchMovies, fetchFocusedMovie };
