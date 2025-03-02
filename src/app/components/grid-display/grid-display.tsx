@@ -15,7 +15,7 @@ const GridDisplay: React.FC<MovieGridInterface> = ({
   return (
     <ul
       role="list"
-      className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-x-2 md:grid-cols-5 lg-grid-cols-6"
+      className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-x-2 md:grid-cols-5 lg-grid-cols-6 p-12"
     >
       {movies?.map((movie, index) => (
         <li

@@ -1,21 +1,33 @@
 "use client";
 import React from "react";
-import { SearchBarProps } from "@/app/interfaces/search-bar-interface";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import { useSearch } from "@/app/utils/search-provider";
+import { ThemeSwitcher } from "../theme-switcher/theme-switcher";
+import { useRouter } from "next/navigation";
 
-const SearchBar: React.FC<SearchBarProps> = ({ setSearchMovieName }) => {
+const SearchBar = () => {
+  const { setMovieNameSearch } = useSearch();
+  const router = useRouter();
+
+  const handleSearch = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      router.push(`/`);
+    }
+  };
   return (
     <div className="grid w-full max-w-sm items-center gap-1.5 m-auto">
-      <div className="relative">
+      <div className="relative flex">
         <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
         <Input
           type="text"
           name="query"
-          onChange={(e) => setSearchMovieName(e.target.value)}
-          className="border m-auto pl-8"
+          onChange={(e) => setMovieNameSearch(e.target.value)}
+          className="border  pl-8 mr-2"
           placeholder="Search"
+          onKeyDown={handleSearch}
         />
+        <ThemeSwitcher />
       </div>
     </div>
   );
