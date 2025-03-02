@@ -1,6 +1,6 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { Movie } from "../interfaces/movie-interface";
-import { searchFilms, searchMovies } from "@/api/movies";
+import { fetchFocusedMovie, searchFilms, searchMovies } from "@/api/movies";
 import { LIMIT } from "../constants/constants";
 // const API_KEY = process.env.NEXT_PUBLIC_OMDB_API_KEY;
 const fetchMovies = async (limit = 10): Promise<Array<Movie>> => {
@@ -26,11 +26,24 @@ const useMovieSearch = (limit: number, query: string) => {
 const useMovieInfiniteSearchScroll = (query: string, limit: number = LIMIT) => {
   return useInfiniteQuery({
     queryKey: ["movies", query, limit],
-    queryFn: async ({pageParam = 1}) => searchFilms(query, pageParam, limit),
+    queryFn: async ({ pageParam = 1 }) => searchFilms(query, pageParam, limit),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage.nextPage,
   });
 };
+const useFetchFocusedMovie = (imdbID: string) => {
+  return useQuery({
+    queryKey: ["movies", imdbID],
+    queryFn: () => fetchFocusedMovie(imdbID),
+    enabled: Boolean(imdbID),
+  });
+};
 
-export { useMovies, fetchMovies, useMovieSearch, searchMovies, useMovieInfiniteSearchScroll };
-
+export {
+  useMovies,
+  fetchMovies,
+  useMovieSearch,
+  searchMovies,
+  useMovieInfiniteSearchScroll,
+  useFetchFocusedMovie,
+};

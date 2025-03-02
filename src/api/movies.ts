@@ -1,5 +1,7 @@
+"use client";
 import { LIMIT } from "@/app/constants/constants";
 import {
+  Movie,
   MovieSearchResult,
   SearchResult,
 } from "@/app/interfaces/movie-interface";
@@ -44,4 +46,12 @@ export const searchFilms = async (
     nextPage: 0,
   };
 };
-export { searchMovies };
+const fetchFocusedMovie = async (imdbID: string): Promise<Movie> => {
+  const response = await fetch(
+    `https://www.omdbapi.com/?i=${imdbID}&apikey=81145613`
+  );
+  const data = await response.json();
+  console.log(data);
+  return data;
+};
+export { searchMovies, fetchFocusedMovie };
