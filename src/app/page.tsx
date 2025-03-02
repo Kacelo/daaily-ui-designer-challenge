@@ -32,7 +32,6 @@ export default function Home() {
       setInitialMoviesQuery(query);
     }
   };
-  console.log(initialMoviesQuery, initialMovies);
   const allMovies = data?.pages.flatMap((page) => page.data) || [];
   if (error)
     return (
