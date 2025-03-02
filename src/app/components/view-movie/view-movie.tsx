@@ -39,7 +39,7 @@ export const ViewFocusedMovie: React.FC<focusedMovieProps> = ({ imdbID }) => {
           {focusedMovie?.Year} | {focusedMovie?.Rated} | {focusedMovie?.Runtime}{" "}
           | {focusedMovie?.Genre}
         </p>
-        <p className="mt-4 text-gray-800">{focusedMovie?.Plot}</p>
+        <p className="mt-4 text-gray-500">{focusedMovie?.Plot}</p>
 
         <div className="mt-4">
           <p>
