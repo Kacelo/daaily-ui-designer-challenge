@@ -4,7 +4,7 @@ import "./globals.css";
 import ReactQueryProvider from "./utils/react-query-provider";
 import DaailyFlixThemeProvider from "./utils/theme-provider";
 import { SearchProvider } from "./utils/search-provider";
-import SearchBar from "./components/search-bar/search-bar";
+import SearchBar from "@/components/custom/search-bar/search-bar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

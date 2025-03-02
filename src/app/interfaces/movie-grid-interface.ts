@@ -1,7 +1,7 @@
-import { MovieSearchResult } from "./movie-interface";
+import { MovieSearchResultType } from "./movie-interface";
 
 export interface MovieGridInterface {
-  movies: MovieSearchResult[];
+  movies: MovieSearchResultType[] | undefined
   isLoading: boolean;
-  ref: (node?: Element | null) => void;
+  ref?: (node?: Element | null) => void;
 }

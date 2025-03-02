@@ -1,14 +1,22 @@
 "use client";
-import { useFetchFocusedMovie } from "@/app/hooks/useMovies";
+import { useFocusedMovie } from "@/app/hooks/useMovies";
 import { focusedMovieProps } from "@/app/interfaces/focused-view-interface";
 import { FocusedMovieSkeleton } from "../skeletons/view-focused-movie";
 
 export const ViewFocusedMovie: React.FC<focusedMovieProps> = ({ imdbID }) => {
-  const { data: focusedMovie, isLoading } = useFetchFocusedMovie(imdbID);
+  const { data: focusedMovie, isLoading, error } = useFocusedMovie(imdbID);
 
   if (isLoading) {
-    return <div><FocusedMovieSkeleton /></div>;
+    return (
+      <div>
+        <FocusedMovieSkeleton />
+      </div>
+    );
   }
+  if (error)
+    return (
+      <p className="text-red-500">Error fetching movie: {error.message}</p>
+    );
 
   const backgroundImage =
     focusedMovie?.Poster === "N/A"
@@ -31,7 +39,7 @@ export const ViewFocusedMovie: React.FC<focusedMovieProps> = ({ imdbID }) => {
           {focusedMovie?.Year} | {focusedMovie?.Rated} | {focusedMovie?.Runtime}{" "}
           | {focusedMovie?.Genre}
         </p>
-        <p className="mt-4 text-gray-800">{focusedMovie?.Plot}</p>
+        <p className="mt-4 text-gray-500">{focusedMovie?.Plot}</p>
 
         <div className="mt-4">
           <p>
