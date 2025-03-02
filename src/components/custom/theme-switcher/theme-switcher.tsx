@@ -1,25 +1,34 @@
 "use client";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-// import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
+/**
+ * ThemeSwitcher component allows users to toggle between light and dark themes.
+ * It uses the `useTheme` hook to get and set the current theme.
+ *
+ * @component
+ * @example
+ * // Usage example:
+ * <ThemeSwitcher />
+ *
+ * @returns {JSX.Element} A button that toggles the theme between light and dark.
+ */
 export const ThemeSwitcher = () => {
   const { setTheme, resolvedTheme } = useTheme();
-  if (resolvedTheme === "dark") {
-    return (
-      <Button variant="outline" size="icon" onClick={() => setTheme("light")}>
-        <Sun />
+  const handleOnClick = () => {
+    if (resolvedTheme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
+
+  return (
+    <>
+      <Button variant="outline" size="icon" onClick={handleOnClick}>
+        {resolvedTheme === "dark" ? <Sun /> : <Moon />}
       </Button>
-    );
-  }
-  if (resolvedTheme === "light") {
-    return (
-      <div>
-        <Button variant="outline" size="icon" onClick={() => setTheme("dark")}>
-          <Moon />
-        </Button>
-      </div>
-    );
-  }
+    </>
+  );
 };

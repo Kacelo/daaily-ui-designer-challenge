@@ -2,7 +2,19 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import { MovieSearchResultType } from "@/app/interfaces/movie-interface";
 
-export const MovieCards: React.FC<MovieSearchResultType> = ({
+/**
+ * A React functional component that displays a movie card with a background image, title, year, and type.
+ * 
+ * @component
+ * @param  props - The properties object containing movie details.
+ * @param  props.Title - The title of the movie.
+ * @param  props.Year - The release year of the movie.
+ * @param  props.Poster - The URL of the movie poster. If the poster is not available, a fallback image is used.
+ * @param  props.Type - The type of the movie (e.g., movie, series).
+ * 
+ * @returns {JSX.Element} A JSX element representing the movie card.
+ */
+export const MovieGridCard: React.FC<MovieSearchResultType> = ({
   Title,
   Year,
   Poster,

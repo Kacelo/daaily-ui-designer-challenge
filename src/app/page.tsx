@@ -1,12 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
+import React,{ useEffect, useState } from "react";
 import { useDebounce } from "./hooks/useDebounce";
 import {
   useFetchInitialMovies,
   useInfiniteMoviesSearch,
 } from "./hooks/useMovies";
 import { useInView } from "react-intersection-observer";
-import { useSearch } from "./utils/search-provider";
+import { useSearch } from "./contexts/search-provider";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import GridDisplay from "@/components/custom/grid-display/grid-display";
 

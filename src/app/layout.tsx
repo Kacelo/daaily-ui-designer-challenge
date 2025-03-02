@@ -1,9 +1,9 @@
 "use client";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ReactQueryProvider from "./utils/react-query-provider";
-import DaailyFlixThemeProvider from "./utils/theme-provider";
-import { SearchProvider } from "./utils/search-provider";
+import ReactQueryProvider from "./contexts/react-query-provider";
+import DaailyFlixThemeProvider from "./contexts/theme-provider";
+import { SearchProvider } from "./contexts/search-provider";
 import SearchBar from "@/components/custom/search-bar/search-bar";
 
 const geistSans = Geist({

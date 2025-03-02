@@ -1,6 +1,20 @@
+/**
+ * GridDisplay component displays a grid of movie cards.
+ * 
+ * @component
+ * @param  props - The properties for the component.
+ * @param  props.movies - The list of movies to display.
+ * @param  props.isLoading - Flag indicating if the data is still loading.
+ * @param  props.ref - Reference to the div element for infinite scrolling.
+ * 
+ * @returns The rendered component.
+ * 
+ * @example
+ * <GridDisplay movies={movies} isLoading={isLoading} ref={ref} />
+ */
 "use client";
 import React from "react";
-import { MovieCards } from "../cards/cards";
+import { MovieGridCard } from "../cards/movie-grid-card";
 import { MovieGridInterface } from "@/app/interfaces/movie-grid-interface";
 import { useRouter } from "next/navigation";
 import { GridMovieSkeleton } from "../skeletons/grid-skeleton";
@@ -28,7 +42,7 @@ const GridDisplay: React.FC<MovieGridInterface> = ({
           className=""
           onClick={() => router.push(`/view-focused-movie/${movie.imdbID}`)}
         >
-          <MovieCards
+          <MovieGridCard
             Title={movie.Title}
             Year={movie.Year}
             Poster={movie?.Poster}
