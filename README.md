@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Movie Search App
 
-## Getting Started
+## How to Run the Project
 
-First, run the development server:
+### Prerequisites
+Before running the project, ensure you have the following installed:
+- **Node.js** (Latest LTS version recommended)
+- **Yarn** or **npm** (package managers)
 
-```bash
-npm run dev
+### Installation
+1. Clone the repository:
+   ```sh
+   git clone git@github.com:Kacelo/daaily-ui-designer-challenge.git
+   cd movie-search-app
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
+3. Obtain an API key from **[OMDb API](https://www.omdbapi.com/)**.
+4. Create a `.env.local` file in the project root and add your API key:
+   ```sh
+   NEXT_PUBLIC_API_KEY=your_api_key_here
+   ```
+5. Run the development server:
+   ```sh
+   npm run dev
+   # or
+   yarn dev
+   ```
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Features
+✅ **Movie search functionality with real-time updates**  
+✅ **Infinite scrolling for seamless browsing**  
+✅ **Debounced search to optimize API calls**  
+✅ **Movie detail page with extended information**  
+✅ **Loading and error states for better UX**  
+✅ **Responsive UI for mobile and desktop**  
+✅ **Theming to provide dark mode**  
+
+## Potential Improvements
+- **Authentication** so users can:
+  - Add movies to a watchlist
+  - Create their own library of movies
+  - Rate the movies they've watched
+- **Filtering movies by genre** on the landing page
+- **Sorting options** like rating, release year, and popularity
+
+## Why I Chose Certain Technologies
+- **Next.js** for **Server-Side Rendering (SSR)** to improve SEO and performance.
+- **React Query** for fetching because it has built-in infinite scroll capabilities and other features that prevent unnecessary data queries.
+- **ShadCN UI library** because it is built with **Tailwind CSS**, which was a requirement.
+- **Tailwind CSS** for styling due to its utility-first approach and responsiveness.
+
+## Assumptions Made
+- **Performance Expectations** – infinite scrolling and debounced search will improve UX and API efficiency.
+- **Default Theme** – most users may prefer dark mode, but theming is provided for customization.
+
+## Running Tests
+To run tests, use:
+```sh
+npm test
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn test
 ```
+Ensure your test environment is properly configured.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Conclusion
+This project provides a great foundation for a movie search app with real-time updates, infinite scrolling, and a great user experience. Further improvements could include authentication, watchlists, and filtering options. Hope you enjoy using it!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
